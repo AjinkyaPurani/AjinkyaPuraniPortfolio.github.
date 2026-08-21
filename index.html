@@ -1,382 +1,319 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Ajinkya Purani | Supply Chain Professional (CSCP)</title>
-<meta name="description" content="Ajinkya Purani, CSCP — Replenishment Analyst at Canadian Tire Corporation. Supply chain, data analytics & procurement portfolio." />
+/* =========================================================
+   Ajinkya Purani — Portfolio
+   Premium dark/light theme, 3D tilt cards, no external 3D libs
+   ========================================================= */
 
-<meta property="og:title" content="Ajinkya Purani | Supply Chain Professional (CSCP)" />
-<meta property="og:description" content="Certified Supply Chain Professional blending engineering, data analytics, and supply chain expertise." />
-<meta property="og:type" content="website" />
+:root{
+  --bg: #0a0e17;
+  --bg-alt: #0d1220;
+  --surface: rgba(255,255,255,0.04);
+  --surface-solid: #111726;
+  --border: rgba(255,255,255,0.08);
+  --text: #e9edf5;
+  --text-dim: #97a1b8;
+  --accent: #5b8cff;
+  --accent-2: #7c5bff;
+  --accent-3: #24d3a4;
+  --warn: #ffb454;
+  --shadow: 0 20px 50px rgba(0,0,0,0.35);
+  --radius: 18px;
+  --font-head: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+[data-theme="light"]{
+  --bg: #f5f7fb;
+  --bg-alt: #ffffff;
+  --surface: rgba(10,20,40,0.03);
+  --surface-solid: #ffffff;
+  --border: rgba(10,20,40,0.08);
+  --text: #12172a;
+  --text-dim: #5a6478;
+  --shadow: 0 20px 50px rgba(20,30,60,0.10);
+}
 
-<link rel="stylesheet" href="style.css" />
-</head>
-<body>
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  overflow-x:hidden;
+  transition: background .4s ease, color .4s ease;
+}
 
-<div class="bg-grid"></div>
-<div class="bg-glow glow-1"></div>
-<div class="bg-glow glow-2"></div>
+/* ---------- animated background ---------- */
+.bg-grid{
+  position:fixed; inset:0; z-index:-2;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+  opacity:.5;
+}
+.bg-glow{
+  position:fixed; z-index:-1; border-radius:50%;
+  filter: blur(120px); opacity:.3; pointer-events:none;
+}
+.glow-1{ width:500px; height:500px; top:-150px; left:-100px; background: var(--accent);}
+.glow-2{ width:450px; height:450px; bottom:-150px; right:-100px; background: var(--accent-2);}
 
-<!-- ===== NAV ===== -->
-<header class="navbar" id="navbar">
-  <div class="nav-inner">
-    <a href="#home" class="logo">AJ<span>.</span></a>
-    <nav class="nav-links" id="navLinks">
-      <a href="#about">About</a>
-      <a href="#certifications">Certifications</a>
-      <a href="#projects">Projects</a>
-      <a href="#volunteer">Volunteer</a>
-      <a href="#achievements">Achievements</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <div class="nav-actions">
-      <button id="themeToggle" class="icon-btn" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
-      <button id="menuToggle" class="icon-btn hamburger" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
-    </div>
-  </div>
-</header>
+/* ---------- helpers ---------- */
+.section{ padding:120px 24px; position:relative; }
+.section.alt{ background: var(--bg-alt); }
+.section-inner{ max-width:1100px; margin:0 auto; }
+.section-eyebrow{
+  color:var(--accent); font-weight:600; letter-spacing:1.5px; text-transform:uppercase;
+  font-size:.8rem; margin-bottom:8px;
+}
+.section-title{
+  font-family:var(--font-head); font-size:clamp(1.8rem,4vw,2.6rem); font-weight:700;
+  margin-bottom:48px;
+}
 
-<!-- ===== HERO ===== -->
-<section id="home" class="hero">
-  <div class="hero-inner">
-    <span class="eyebrow-pill reveal"><span class="dot"></span> Supply Chain | Engineer | Volunteer</span>
-    <h1 class="hero-name reveal">Ajinkya Purani</h1>
-    <h2 class="hero-title reveal">
-      <span class="typewriter" id="typewriter"></span><span class="cursor">|</span>
-    </h2>
-    <p class="hero-tagline reveal">
-      Certified Supply Chain Professional (CSCP) with 3+ years of experience in manufacturing supply chain
-      and 2+ years in logistics &amp; retail operations — blending engineering, data analytics, and supply
-      chain expertise to drive smarter, faster decisions.
-    </p>
-    <div class="hero-cta reveal">
-      <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-diagram-project"></i> View Projects</a>
-      <a href="#contact" class="btn btn-outline"><i class="fa-regular fa-paper-plane"></i> Get in Touch</a>
-    </div>
-    <div class="hero-social reveal">
-      <a href="https://www.linkedin.com/in/ajinkyapurani/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-      <a href="mailto:ajinkyapurani1996@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
-    </div>
-  </div>
-  <a href="#about" class="scroll-cue" aria-label="Scroll down"><i class="fa-solid fa-chevron-down"></i></a>
-</section>
+.chip-row{ display:flex; flex-wrap:wrap; gap:8px; }
+.chip-row.extra-skills{ margin-top:32px; justify-content:center; }
+.chip{
+  background:var(--surface); border:1px solid var(--border);
+  padding:6px 14px; border-radius:999px; font-size:.82rem; color:var(--text-dim);
+  transition: all .25s ease;
+}
+.skill-card:hover .chip, .project-card:hover .chip{ border-color:var(--accent); color:var(--text); }
 
-<!-- ===== ABOUT ===== -->
-<section id="about" class="section">
-  <div class="section-inner">
-    <p class="section-eyebrow reveal">Know more about me</p>
-    <h2 class="section-title reveal">About Me</h2>
-    <div class="about-grid">
-      <div class="about-text reveal">
-        <p>
-          I am a dedicated supply chain professional with a strong track record of optimizing operations,
-          enhancing customer satisfaction, and improving efficiency. I began my career in
-          <strong>Production Planning at SCHOTT Pharma, India</strong>, where I developed expertise in MRP,
-          production processes, and regulatory compliance. After being promoted to Buyer, I supported the
-          procurement team with contract negotiations, integrated data analytics, and reduced lead times and costs.
-        </p>
-        <p>
-          After moving to Canada for higher studies, I joined <strong>Amazon's Ottawa fulfillment center</strong>,
-          gaining hands-on logistics experience. At <strong>Michaels</strong>, I supported retail operations by
-          aligning store needs with supply chain processes. I also served as a <strong>Peer Tutor at Fleming
-          College</strong>, sharing my knowledge of supply chain management.
-        </p>
-        <p>
-          Currently, I work at <strong>Canadian Tire Corporation as a Replenishment Analyst</strong>, managing
-          around 2,500+ SKUs across five business categories worth $150M in annual sales. I've collaborated with
-          50+ global suppliers and six internal teams to reduce $20M in excess orders, improve inventory
-          alignment, support national promotions, and build dashboards that drive strategic decisions.
-        </p>
-        <div class="about-stats">
-          <div class="stat"><span class="stat-num" data-count="2500">0</span><span class="stat-label">SKUs managed<br/>across 5 categories</span></div>
-          <div class="stat"><span class="stat-num" data-count="150" data-suffix="M">0</span><span class="stat-label">Annual sales portfolio<br/>(USD/CAD)</span></div>
-          <div class="stat"><span class="stat-num" data-count="20" data-suffix="M">0</span><span class="stat-label">Excess inventory<br/>reduced</span></div>
-          <div class="stat"><span class="stat-num" data-count="50" data-suffix="+">0</span><span class="stat-label">Global suppliers<br/>collaborated with</span></div>
-        </div>
-      </div>
-      <div class="about-card reveal">
-        <div class="card-glow"></div>
-        <ul class="quick-facts">
-          <li><i class="fa-solid fa-briefcase"></i><div><strong>Current Role</strong><span>Replenishment Analyst, Canadian Tire Corp.</span></div></li>
-          <li><i class="fa-solid fa-award"></i><div><strong>Certification</strong><span>APICS CSCP · CPIM (in progress)</span></div></li>
-          <li><i class="fa-solid fa-location-dot"></i><div><strong>Location</strong><span>Toronto, ON, Canada</span></div></li>
-          <li><i class="fa-solid fa-graduation-cap"></i><div><strong>Education</strong><span>Fleming College — Supply Chain Mgmt.</span></div></li>
-          <li><i class="fa-solid fa-layer-group"></i><div><strong>Focus</strong><span>Replenishment · Analytics · Procurement</span></div></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+.cta-row{ display:flex; justify-content:center; margin-top:36px; }
 
-<!-- ===== CERTIFICATIONS ===== -->
-<section id="certifications" class="section alt">
-  <div class="section-inner">
-    <p class="section-eyebrow reveal">Credentials</p>
-    <h2 class="section-title reveal">Certifications &amp; Education</h2>
-    <div class="skills-grid">
+.btn{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:14px 28px; border-radius:12px; font-weight:600; font-size:.95rem;
+  text-decoration:none; cursor:pointer; border:1px solid transparent; transition: all .3s ease;
+}
+.btn-primary{
+  background:linear-gradient(135deg, var(--accent), var(--accent-2));
+  color:#fff; box-shadow: 0 10px 30px rgba(91,140,255,.35);
+}
+.btn-primary:hover{ transform:translateY(-3px); box-shadow: 0 15px 40px rgba(91,140,255,.5); }
+.btn-outline{ border-color:var(--border); color:var(--text); background:var(--surface); }
+.btn-outline:hover{ border-color:var(--accent); transform:translateY(-3px); }
+.btn.full{ width:100%; justify-content:center; }
 
-      <div class="skill-card tilt-card reveal">
-        <div class="skill-icon"><i class="fa-solid fa-certificate"></i></div>
-        <h3>APICS CSCP</h3>
-        <p class="skill-desc">Certified Supply Chain Professional — end-to-end expertise in supply chain strategy, planning, and execution.</p>
-      </div>
+/* ---------- reveal animation ---------- */
+.reveal{ opacity:0; transform:translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in{ opacity:1; transform:translateY(0); }
 
-      <div class="skill-card tilt-card reveal">
-        <div class="skill-icon"><i class="fa-solid fa-hourglass-half"></i></div>
-        <h3>CPIM <span class="badge-inprogress">In Progress</span></h3>
-        <p class="skill-desc">Certified in Planning and Inventory Management — deepening core planning &amp; inventory competencies.</p>
-      </div>
+/* ---------- navbar ---------- */
+.navbar{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  backdrop-filter: blur(14px); background: rgba(10,14,23,0.55);
+  border-bottom:1px solid var(--border); transition: background .4s ease;
+}
+[data-theme="light"] .navbar{ background: rgba(255,255,255,0.7); }
+.nav-inner{
+  max-width:1200px; margin:0 auto; padding:16px 24px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.logo{
+  font-family:var(--font-head); font-weight:800; font-size:1.4rem; color:var(--text); text-decoration:none;
+}
+.logo span{ color:var(--accent); }
+.nav-links{ display:flex; gap:26px; }
+.nav-links a{
+  color:var(--text-dim); text-decoration:none; font-weight:500; font-size:.9rem;
+  position:relative; transition: color .25s ease; white-space:nowrap;
+}
+.nav-links a::after{
+  content:''; position:absolute; left:0; bottom:-6px; width:0; height:2px;
+  background:linear-gradient(90deg,var(--accent),var(--accent-2)); transition: width .3s ease;
+}
+.nav-links a:hover{ color:var(--text); }
+.nav-links a:hover::after{ width:100%; }
+.nav-actions{ display:flex; align-items:center; gap:10px; }
+.icon-btn{
+  background:var(--surface); border:1px solid var(--border); color:var(--text);
+  width:40px; height:40px; border-radius:10px; cursor:pointer; display:flex; align-items:center; justify-content:center;
+  transition: all .25s ease;
+}
+.icon-btn:hover{ border-color:var(--accent); transform:translateY(-2px); }
+.hamburger{ display:none; }
 
-      <div class="skill-card tilt-card reveal">
-        <div class="skill-icon"><i class="fa-solid fa-handshake"></i></div>
-        <h3>ASCM Procurement Certificate</h3>
-        <p class="skill-desc">Supply Chain Procurement Certificate — proficiency in procurement and supplier collaboration.</p>
-      </div>
+/* ---------- hero ---------- */
+.hero{
+  min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:140px 24px 80px; position:relative; overflow:hidden;
+}
+.hero-bg{
+  position:absolute; inset:0; z-index:0;
+  background-image:url('images/supply-chain-bg.png');
+  background-size:cover; background-position:center;
+  opacity:0.32; filter:saturate(1.1);
+  transform:scale(1.05);
+}
+[data-theme="light"] .hero-bg{ opacity:0.16; }
+.hero-overlay{
+  position:absolute; inset:0; z-index:1;
+  background:
+    linear-gradient(180deg, var(--bg) 0%, rgba(10,14,23,0.55) 35%, rgba(10,14,23,0.75) 70%, var(--bg) 100%);
+}
+[data-theme="light"] .hero-overlay{
+  background:
+    linear-gradient(180deg, var(--bg) 0%, rgba(245,247,251,0.55) 35%, rgba(245,247,251,0.8) 70%, var(--bg) 100%);
+}
+.hero-inner{ max-width:780px; position:relative; z-index:2; }
+.eyebrow-pill{
+  display:inline-flex; align-items:center; gap:8px; color:var(--accent-3); font-weight:600;
+  letter-spacing:1.5px; text-transform:uppercase; font-size:.78rem; margin-bottom:22px;
+  background:rgba(36,211,164,0.08); border:1px solid rgba(36,211,164,0.25); padding:7px 16px; border-radius:999px;
+}
+.dot{ width:6px; height:6px; border-radius:50%; background:var(--accent-3); flex-shrink:0; }
+.hero-name{
+  font-family:var(--font-head); font-weight:800; font-size:clamp(2.6rem,7vw,4.2rem);
+  background:linear-gradient(135deg,var(--text) 30%, var(--accent) 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  margin-bottom:8px; line-height:1.1;
+}
+.hero-title{
+  font-family:var(--font-head); font-weight:600; font-size:clamp(1.1rem,3vw,1.5rem);
+  color:var(--accent-3); min-height:2em; margin-bottom:22px;
+}
+.cursor{ animation: blink 1s infinite; color:var(--accent); }
+@keyframes blink{ 50%{opacity:0;} }
+.hero-tagline{ color:var(--text-dim); font-size:1.05rem; line-height:1.7; margin-bottom:36px; }
+.hero-cta{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:36px; }
+.hero-social{ display:flex; gap:18px; justify-content:center; }
+.hero-social a{
+  width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  border:1px solid var(--border); color:var(--text-dim); text-decoration:none; transition:all .3s ease;
+}
+.hero-social a:hover{ color:#fff; background:linear-gradient(135deg,var(--accent),var(--accent-2)); border-color:transparent; transform:translateY(-4px); }
 
-      <div class="skill-card tilt-card reveal">
-        <div class="skill-icon"><i class="fa-solid fa-university"></i></div>
-        <h3>Rutgers University</h3>
-        <p class="skill-desc">Supply Chain Management Specialization.</p>
-      </div>
+.scroll-cue{
+  position:absolute; bottom:36px; left:50%; transform:translateX(-50%); z-index:2;
+  color:var(--text-dim); animation: bounce 2s infinite; text-decoration:none;
+}
+@keyframes bounce{ 0%,100%{transform:translate(-50%,0);} 50%{transform:translate(-50%,8px);} }
 
-      <div class="skill-card tilt-card reveal">
-        <div class="skill-icon"><i class="fa-solid fa-university"></i></div>
-        <h3>University of Pennsylvania</h3>
-        <p class="skill-desc">Retail Digital Supply Chain.</p>
-      </div>
+/* ---------- about ---------- */
+.about-grid{ display:grid; grid-template-columns: 1.4fr 1fr; gap:48px; align-items:start; }
+.about-text p{ color:var(--text-dim); line-height:1.8; margin-bottom:18px; }
+.about-text strong{ color:var(--text); }
+.about-stats{ display:flex; gap:28px; margin-top:32px; flex-wrap:wrap; }
+.stat-num{ display:block; font-family:var(--font-head); font-size:2.1rem; font-weight:800; color:var(--accent); }
+.stat-label{ color:var(--text-dim); font-size:.8rem; line-height:1.4; }
 
-      <div class="skill-card tilt-card reveal">
-        <div class="skill-icon"><i class="fa-solid fa-university"></i></div>
-        <h3>University of British Columbia</h3>
-        <p class="skill-desc">Seasonal Forecasting Methods.</p>
-      </div>
+.about-card{
+  position:relative; background:var(--surface-solid); border:1px solid var(--border);
+  border-radius:var(--radius); padding:32px; box-shadow:var(--shadow); overflow:hidden;
+}
+.card-glow{
+  position:absolute; width:200px; height:200px; background:var(--accent); filter:blur(80px);
+  opacity:.25; top:-60px; right:-60px; border-radius:50%;
+}
+.quick-facts{ list-style:none; position:relative; z-index:1; }
+.quick-facts li{ display:flex; gap:16px; align-items:flex-start; padding:14px 0; border-bottom:1px solid var(--border); }
+.quick-facts li:last-child{ border-bottom:none; }
+.quick-facts i{ color:var(--accent); font-size:1.1rem; margin-top:3px; width:20px; }
+.quick-facts strong{ display:block; font-size:.78rem; text-transform:uppercase; letter-spacing:.5px; color:var(--text-dim); }
+.quick-facts span{ font-size:.98rem; font-weight:500; }
+.achievements-list strong{ text-transform:none; font-size:.98rem; color:var(--text); letter-spacing:0; }
+.achievements-list span{ font-size:.9rem; font-weight:400; color:var(--text-dim); }
+.achievements-list a{ color:var(--accent); text-decoration:none; font-weight:600; }
+.achievements-list a:hover{ text-decoration:underline; }
 
-    </div>
+/* ---------- skills / certifications ---------- */
+.skills-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:24px; perspective:1500px; }
+.skill-card{
+  background:var(--surface-solid); border:1px solid var(--border); border-radius:var(--radius);
+  padding:28px; transition: transform .12s ease-out, box-shadow .12s ease-out, border-color .2s ease;
+  position:relative; transform-style:preserve-3d; will-change:transform;
+}
+.skill-icon{
+  width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#fff; font-size:1.3rem; margin-bottom:18px;
+  transform:translateZ(25px);
+}
+.skill-card h3{ font-family:var(--font-head); font-size:1.05rem; margin-bottom:10px; transform:translateZ(18px); }
+.skill-desc{ color:var(--text-dim); font-size:.88rem; line-height:1.6; transform:translateZ(10px); }
+.badge-inprogress{
+  display:inline-block; font-size:.65rem; font-weight:700; letter-spacing:.5px; text-transform:uppercase;
+  color:var(--warn); background:rgba(255,180,84,.14); padding:3px 9px; border-radius:999px; margin-left:8px; vertical-align:middle;
+}
 
-    <div class="chip-row extra-skills reveal">
-      <span class="chip">SAP ERP</span>
-      <span class="chip">Lean Six Sigma</span>
-      <span class="chip">ESG Principles</span>
-      <span class="chip">Risk Mitigation</span>
-      <span class="chip">Power BI</span>
-      <span class="chip">Power Query &amp; DAX</span>
-    </div>
+/* ---------- projects / volunteer cards (3D tilt) ---------- */
+.projects-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:28px; perspective:1800px; }
+.project-card{
+  background:var(--surface-solid); border:1px solid var(--border); border-radius:var(--radius);
+  overflow:hidden; transition: transform .12s ease-out, box-shadow .12s ease-out, border-color .2s ease;
+  position:relative; display:flex; flex-direction:column; transform-style:preserve-3d; will-change:transform;
+}
+.card-image{
+  width:100%; height:190px; object-fit:cover; display:block; background:var(--surface);
+  border-bottom:1px solid var(--border);
+}
+.project-body{ padding:26px; display:flex; flex-direction:column; flex:1; transform:translateZ(18px); }
+.project-tag{
+  font-size:.72rem; font-weight:700; letter-spacing:.5px; text-transform:uppercase; color:var(--accent-3);
+  background:rgba(36,211,164,.12); padding:5px 12px; border-radius:999px; align-self:flex-start; margin-bottom:14px;
+}
+.project-card h3{ font-family:var(--font-head); font-size:1.15rem; margin-bottom:10px; }
+.project-card p{ color:var(--text-dim); line-height:1.65; margin-bottom:16px; font-size:.92rem; flex:1; }
+.project-link{
+  color:var(--accent); text-decoration:none; font-weight:600; font-size:.9rem;
+  display:inline-flex; align-items:center; gap:8px; margin-top:auto;
+}
+.project-link:hover{ text-decoration:underline; }
 
-    <div class="cta-row reveal">
-      <a href="https://www.canva.com/design/DAF-xevsQDU/tmRWFaI69yycsuP-CN_J6Q/view?utm_content=DAF-xevsQDU&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks#9" target="_blank" rel="noopener" class="btn btn-outline">
-        <i class="fa-regular fa-file-lines"></i> View Full Certification Portfolio
-      </a>
-    </div>
-  </div>
-</section>
+/* Tilt / glare states — controlled via JS setting CSS vars + .is-tilting class */
+.tilt-card.is-tilting{
+  box-shadow: -18px 26px 50px rgba(91,140,255,0.18), 0 24px 50px rgba(0,0,0,0.45);
+  border-color: rgba(91,140,255,0.35);
+  transition: box-shadow .2s ease, border-color .2s ease;
+}
+.glare{
+  position:absolute; inset:0; border-radius:var(--radius); pointer-events:none;
+  background:radial-gradient(circle at var(--gx,50%) var(--gy,50%), rgba(255,255,255,0.10), transparent 55%);
+  opacity:0; transition:opacity .2s ease;
+}
+.tilt-card.is-tilting .glare{ opacity:1; }
 
-<!-- ===== PROJECTS ===== -->
-<section id="projects" class="section">
-  <div class="section-inner">
-    <p class="section-eyebrow reveal">Selected work</p>
-    <h2 class="section-title reveal">Projects</h2>
-    <div class="projects-grid">
+/* ---------- contact ---------- */
+.contact-grid{ display:grid; grid-template-columns:1fr 1.3fr; gap:48px; }
+.contact-info p{ color:var(--text-dim); line-height:1.7; margin-bottom:24px; }
+.contact-line{
+  display:flex; align-items:center; gap:12px; color:var(--text); text-decoration:none;
+  padding:14px 0; border-bottom:1px solid var(--border); transition:color .25s ease;
+}
+.contact-line:hover{ color:var(--accent); }
+.contact-line i{ color:var(--accent); width:20px; }
+.contact-form{ display:flex; flex-direction:column; gap:16px; }
+.form-row{ display:flex; gap:16px; }
+.contact-form input, .contact-form textarea{
+  background:var(--surface-solid); border:1px solid var(--border); border-radius:10px;
+  padding:14px 16px; color:var(--text); font-family:var(--font-body); font-size:.92rem; width:100%;
+  transition: border-color .25s ease;
+}
+.contact-form input:focus, .contact-form textarea:focus{ outline:none; border-color:var(--accent); }
+.contact-form textarea{ resize:vertical; }
 
-      <article class="project-card tilt-card reveal">
-        <div class="glare"></div>
-        <img class="card-image" src="images/New%20Power%20BI%20project.gif" alt="Retail Sales & Cost Analysis Dashboard" />
-        <div class="project-body">
-          <span class="project-tag">Power BI</span>
-          <h3>Retail Sales &amp; Cost Analysis Dashboard</h3>
-          <p>Built a Power BI dashboard analyzing sales and costs for nearly 200,000 products and 160,000
-          customers, totaling over $176M in sales. Cleaned data with Power Query and used DAX for key metrics
-          like Cost of Goods Sold, sales, and inventory, with interactive drill-downs by location, category,
-          and time — surfacing underperforming categories and expensive SKUs.</p>
-          <a href="https://www.linkedin.com/posts/ajinkyapurani_powerbi-dataanalytics-retailanalytics-activity-7343423041101594624-g_B1" target="_blank" rel="noopener" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-        </div>
-      </article>
+/* ---------- footer ---------- */
+.footer{ text-align:center; padding:32px 24px; color:var(--text-dim); font-size:.85rem; border-top:1px solid var(--border); }
 
-      <article class="project-card tilt-card reveal">
-        <div class="glare"></div>
-        <img class="card-image" src="images/Fleming%20Super.gif" alt="Fleming Super Store Supply Chain Transformation" />
-        <div class="project-body">
-          <span class="project-tag">Power BI</span>
-          <h3>Fleming Super Store: Data-Driven Transformation</h3>
-          <p>Collaborated with Fleming Super Store, using Power BI to tackle financial and customer issues.
-          Result: a 15% boost in revenue, a 20% increase in customer satisfaction, and stockouts dropped from
-          20 to 5 per month — showing the impact of data-driven insights on operational efficiency.</p>
-          <a href="https://drive.google.com/file/d/1mO3OYtEQ7oo378ZAuO-M9P-1wnogUA6s/view?usp=drive_link" target="_blank" rel="noopener" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-        </div>
-      </article>
-
-      <article class="project-card tilt-card reveal">
-        <div class="glare"></div>
-        <img class="card-image" src="images/INT%20Project%20.jpg" alt="Inventory Turnover Project" />
-        <div class="project-body">
-          <span class="project-tag">Analysis</span>
-          <h3>Inventory Turnover Comparative Analysis</h3>
-          <p>Conducted a comparative analysis of inventory turnover across four major retail giants: Walmart,
-          Canadian Tire Corporation, The Home Depot, and Costco Wholesale — exploring how product assortment,
-          seasonal demand, and shifting consumer preferences drive turnover rates.</p>
-          <a href="https://drive.google.com/file/d/1fB1jBOgpURroK72VKL-lpOpZbNNU_9Lx/view?usp=sharing" target="_blank" rel="noopener" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-        </div>
-      </article>
-
-      <article class="project-card tilt-card reveal">
-        <div class="glare"></div>
-        <img class="card-image" src="images/Procurement%20Pro%201.gif" alt="Public Playground Equipment Procurement Project" />
-        <div class="project-body">
-          <span class="project-tag">Procurement</span>
-          <h3>Public Playground Equipment Procurement</h3>
-          <p>Academic simulation acquiring &amp; installing playground equipment for City of Peterborough parks
-          with a $50,600 budget. Acted as Corporate Buyer managing the full procurement cycle — planning,
-          specifications, documentation, vendor selection, and financial transactions.</p>
-          <a href="https://drive.google.com/file/d/19sUAtKI8BRguRBpvOo8ljDTIGXGji1BM/view?usp=sharing" target="_blank" rel="noopener" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-        </div>
-      </article>
-
-      <article class="project-card tilt-card reveal">
-        <div class="glare"></div>
-        <img class="card-image" src="images/Customs%20Project%20.png" alt="Peterborough Furniture Importing Customs Project" />
-        <div class="project-body">
-          <span class="project-tag">Trade &amp; Customs</span>
-          <h3>Furniture Importing Customs Project</h3>
-          <p>Explored customs management end-to-end — preparing documents, calculating duties/taxes, and
-          applying tariff treatments like MFN and CUSMA. Used HS codes to reduce costs and present clear
-          landed costs for better decision-making.</p>
-          <a href="https://drive.google.com/file/d/1040FPjgjQt1K-WmjwzfIc0m4Kl86lcXY/view?usp=drive_link" target="_blank" rel="noopener" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-        </div>
-      </article>
-
-      <article class="project-card tilt-card reveal">
-        <div class="glare"></div>
-        <img class="card-image" src="images/Value%20Chain%20International%20.png" alt="Value Chain International Project" />
-        <div class="project-body">
-          <span class="project-tag">Global Exchange</span>
-          <h3>Value Chain International Project</h3>
-          <p>Participated in an international value chain exchange with Netherlands students across three
-          online sessions — analyzing a global value chain and its alignment with the UN Sustainable
-          Development Goals (SDGs).</p>
-          <a href="https://drive.google.com/file/d/16kvpVBJeDnMtMwnRtAaZ962Mt9yN5fRM/view?usp=drive_link" target="_blank" rel="noopener" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- ===== VOLUNTEER ===== -->
-<section id="volunteer" class="section alt">
-  <div class="section-inner">
-    <p class="section-eyebrow reveal">Giving back</p>
-    <h2 class="section-title reveal">Volunteer &amp; Community</h2>
-    <div class="projects-grid">
-
-      <article class="project-card tilt-card reveal">
-        <div class="glare"></div>
-        <img class="card-image" src="images/Jump%20Start.jpg" alt="Canadian Tire Jumpstart Volunteer" />
-        <div class="project-body">
-          <span class="project-tag">Since Feb 2025</span>
-          <h3>Canadian Tire Jumpstart Volunteer</h3>
-          <p>Supporting event activities by managing lines, distributing snacks and drinks, and assisting
-          attendees. In June 2025, organized and led a pet photo contest fundraiser for Jumpstart Charities.</p>
-          <a href="https://www.linkedin.com/posts/ajinkyapurani_jumpstart20-sportsforall-activity-7299209839686152194-M0XO" target="_blank" rel="noopener" class="project-link">View Post <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-        </div>
-      </article>
-
-      <article class="project-card tilt-card reveal">
-        <div class="glare"></div>
-        <img class="card-image" src="images/ASCM%20Volunteer.jpeg" alt="ASCM Toronto Volunteer" />
-        <div class="project-body">
-          <span class="project-tag">March 2025</span>
-          <h3>ASCM Toronto Chapter Volunteer</h3>
-          <p>Volunteered with the ASCM Toronto Chapter, seeing firsthand how supply chain work can bring hope
-          to those in need — part of a community showing how volunteering in supply chain can change lives.</p>
-          <a href="https://www.linkedin.com/posts/ajinkyapurani_supplychain-volunteering-dailybreadfoodbank-activity-7294130814370410496-sKfe" target="_blank" rel="noopener" class="project-link">View Post <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-        </div>
-      </article>
-
-      <article class="project-card tilt-card reveal">
-        <div class="glare"></div>
-        <img class="card-image" src="images/Make%20a%20wish%20Canada.jpeg" alt="Make-A-Wish Canada Volunteer" />
-        <div class="project-body">
-          <span class="project-tag">March 2023</span>
-          <h3>Make-A-Wish Canada — Algonquin Volunteer</h3>
-          <p>Part of a student volunteer team supporting children with critical illnesses. Our 8-Ball Pool
-          Event surpassed its $1,000 goal, raising approximately $2,618 through online campaigns, Eventbrite,
-          and a suite ticket auction.</p>
-          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7045807720137940992/" target="_blank" rel="noopener" class="project-link">View Post <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-        </div>
-      </article>
-
-      <article class="project-card tilt-card reveal">
-        <div class="glare"></div>
-        <img class="card-image" src="images/Muti%20cluture%20show.jpeg" alt="Fleming College Volunteer" />
-        <div class="project-body">
-          <span class="project-tag">Since Sept 2023</span>
-          <h3>Fleming College Volunteer</h3>
-          <p>Multiple roles supporting student life: SAC Street Team promoting events, Job Fair setup and
-          attendee support, Winter Orientation Ambassador welcoming new students, and celebrating diversity
-          through the Multi-Cultural Showcase.</p>
-          <a href="https://www.linkedin.com/posts/ajinkyapurani_flemingmulticulturalshowcase-volunteerlife-activity-7131855600572928001-9eGo" target="_blank" rel="noopener" class="project-link">View Post <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- ===== ACHIEVEMENTS ===== -->
-<section id="achievements" class="section">
-  <div class="section-inner">
-    <p class="section-eyebrow reveal">Recognition</p>
-    <h2 class="section-title reveal">Achievements</h2>
-    <div class="about-grid">
-      <div class="about-card reveal" style="grid-column: 1 / -1;">
-        <div class="card-glow"></div>
-        <ul class="quick-facts achievements-list">
-          <li><i class="fa-solid fa-trophy"></i><div><strong>2024 — Student Life Volunteer Award</strong><span>Recognized as an Emerging Student Leader for demonstrated leadership and commitment to community service.</span></div></li>
-          <li><i class="fa-solid fa-hand-holding-heart"></i><div><strong>2023 — Make-A-Wish Canada</strong><span>Helped raise $2,681 through the 8-Ball Pool fundraiser event.</span></div></li>
-          <li><i class="fa-solid fa-medal"></i><div><strong>2019 — National Kickboxing Championship, India</strong><span>Achieved First Runner-Up.</span></div></li>
-          <li><i class="fa-solid fa-flag"></i><div><strong>2015 — National Project Competition</strong><span>Represented college at the national level.</span></div></li>
-          <li><i class="fa-solid fa-list-check"></i><div><strong>Fleming College Co-Curricular Record (CCR)</strong><span>Demonstrated leadership, communication, and time management across cultural showcases, career events, workshops, and resilience programs. <a href="https://drive.google.com/file/d/1AxCXb38tOoxay2Cm2GbShf3oDRMCyuA2/view?usp=drive_link" target="_blank" rel="noopener">View CCR →</a></span></div></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== CONTACT ===== -->
-<section id="contact" class="section alt">
-  <div class="section-inner">
-    <p class="section-eyebrow reveal">Let's connect</p>
-    <h2 class="section-title reveal">Get In Touch</h2>
-    <div class="contact-grid">
-      <div class="contact-info reveal">
-        <p>Interested in supply chain analytics, replenishment strategy, or just want to talk data-driven
-        operations? I'd love to hear from you.</p>
-        <a class="contact-line" href="mailto:ajinkyapurani1996@gmail.com"><i class="fa-regular fa-envelope"></i> ajinkyapurani1996@gmail.com</a>
-        <a class="contact-line" href="https://www.linkedin.com/in/ajinkyapurani/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> linkedin.com/in/ajinkyapurani</a>
-        <a class="contact-line" href="#"><i class="fa-solid fa-location-dot"></i> Toronto, ON, Canada</a>
-      </div>
-      <form class="contact-form" onsubmit="return false;">
-        <div class="form-row">
-          <input type="text" placeholder="Your Name" required />
-          <input type="email" placeholder="Your Email" required />
-        </div>
-        <input type="text" placeholder="Subject" required />
-        <textarea rows="5" placeholder="Your Message" required></textarea>
-        <button type="submit" class="btn btn-primary full"><i class="fa-regular fa-paper-plane"></i> Send Message</button>
-      </form>
-    </div>
-  </div>
-</section>
-
-<footer class="footer">
-  <p>&copy; <span id="year"></span> Ajinkya Purani. Supply Chain Nerd, who believes Data is Everything.</p>
-</footer>
-
-<script src="script.js"></script>
-</body>
-</html>
+/* ---------- responsive ---------- */
+@media (max-width: 860px){
+  .about-grid, .contact-grid{ grid-template-columns:1fr; }
+  .form-row{ flex-direction:column; }
+}
+@media (max-width: 900px){
+  .nav-links{
+    position:fixed; top:72px; right:24px; left:24px; flex-direction:column; gap:0;
+    background:var(--surface-solid); border:1px solid var(--border); border-radius:14px;
+    padding:8px; box-shadow:var(--shadow); transform-origin:top; transform:scaleY(0); opacity:0; pointer-events:none;
+    transition: all .25s ease;
+  }
+  .nav-links.open{ transform:scaleY(1); opacity:1; pointer-events:auto; }
+  .nav-links a{ padding:14px 12px; border-bottom:1px solid var(--border); }
+  .nav-links a:last-child{ border-bottom:none; }
+  .hamburger{ display:flex; }
+}
+@media (prefers-reduced-motion: reduce){
+  .tilt-card{ transition:none !important; }
+}
